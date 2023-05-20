@@ -1,19 +1,17 @@
-stos = ['(', '(', '(', ')', '(', '(', ')', ')']
-index = 0
-normalny_stos =[]
-j = 0
+def popr_naw(s: str) -> bool:
+    stack = []
+    for i in s:
+        if i == '(':
+            stack.append(i)
+        elif i == ')':
+            if not stack or stack[-1] != '(':
+                return False
+            stack.pop()
+    return not stack
 
-for i in stos :
-    if i == '(':
-        normalny_stos.append(i)
-    elif i == ')':
-        print(False)
-    else:
-        stos.pop(j)
-    j += 1
 
-if stos == 0:
-    print(True)
-else:
-    print(False)
-    print(normalny_stos)
+stos = ['(', '(', '(', '(', '(', ')', ')', ')', ')', ')', ')', ')']  # tu będzie fałsz
+stos2 = ['(', '(', '(', '(', ')', ')', ')', ')']  # tu będzie prawda
+
+print(popr_naw(stos))
+print(popr_naw(stos2))
